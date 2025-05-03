@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>SEARCHSMART | 數碼廣告解決方案</title>
+    <!-- SEO Meta Tags-->
+    <meta name="description" content="SEARCHSMART -   Digital Advertising Agency">
+    <meta name="keywords" content="bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative">
+    <meta name="author" content="SEARCHSMART">
+    <!-- Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon and Touch Icons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" color="#5bbad5" href="safari-pinned-tab.svg">
+    <meta name="msapplication-TileColor" content="#766df4">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Page loading styles-->
+    <style>
+      .page-loading {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-transition: all .4s .2s ease-in-out;
+        transition: all .4s .2s ease-in-out;
+        background-color: #fff;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 9999;
+      }
+      .page-loading.active {
+        opacity: 1;
+        visibility: visible;
+      }
+      .page-loading-inner {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -webkit-transition: opacity .2s ease-in-out;
+        transition: opacity .2s ease-in-out;
+        opacity: 0;
+      }
+      .page-loading.active > .page-loading-inner {
+        opacity: 1;
+      }
+      .page-loading-inner > span {
+        display: block;
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #737491;
+      }
+      .page-spinner {
+        display: inline-block;
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-bottom: .75rem;
+        vertical-align: text-bottom;
+        border: .15em solid #766df4;
+        border-right-color: transparent;
+        border-radius: 50%;
+        -webkit-animation: spinner .75s linear infinite;
+        animation: spinner .75s linear infinite;
+      }
+      @-webkit-keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      
+    </style>
+    <!-- Page loading scripts-->
+    <script>
+      (function () {
+        window.onload = function () {
+          var preloader = document.querySelector('.page-loading');
+          preloader.classList.remove('active');
+          setTimeout(function () {
+            preloader.remove();
+          }, 2000);
+        };
+      })();
+      
+    </script>
+    <!-- Vendor Styles-->
+    <link rel="stylesheet" media="screen" href="vendor/simplebar/dist/simplebar.min.css"/>
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="css/theme.min.css">
+  </head>
+  <!-- Body-->
+  <body>
+    <!-- Page loading spinner-->
+    <div class="page-loading active">
+      <div class="page-loading-inner">
+        <div class="page-spinner"></div><span>加載...</span>
+      </div>
+    </div>
+    <main class="page-wrapper">
+
+      <!-- 登入 Modal-->
+      <div class="modal fade" id="modal-signin" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content border-0">
+            <div class="view show" id="modal-signin-view">
+              <div class="modal-header border-0 bg-dark px-4">
+                <h4 class="modal-title text-light">登入</h4>
+                <button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="btn-close "></button>
+              </div>
+              <div class="modal-body px-4">
+                <p class="fs-ms text-muted">使用註冊期間提供的電子郵件和密碼登錄您的帳戶。</p>
+                <form class="needs-validation" novalidate>
+                  <div class="mb-3">
+                    <div class="input-group"><i class="ai-mail position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+                      <input class="form-control rounded" type="email" placeholder="Email" required>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <div class="input-group"><i class="ai-lock position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+                      <div class="password-toggle w-100">
+                        <input class="form-control" type="password" placeholder="Password" required>
+                        <label class="password-toggle-btn" aria-label="Show/hide password">
+                          <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center mb-3 mb-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="keep-signed">
+                      <label class="form-check-label fs-sm" for="keep-signed">保持登錄狀態</label>
+                    </div><a class="nav-link-style fs-ms" href="password-recovery.html">忘記密碼？</a>
+                  </div>
+                  <button class="btn btn-primary d-block w-100" type="submit">登入ton>
+                  <p class="fs-sm pt-3 mb-0">沒有帳戶？<a href='#' class='fw-medium' data-view='#modal-signup-view'>報名</a></p>
+                </form>
+              </div>
+            </div>
+            <div class="view" id="modal-signup-view">
+              <div class="modal-header border-0 bg-dark px-4">
+                <h4 class="modal-title text-light">報名</h4>
+                <button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="btn-close"></button>
+              </div>
+              <div class="modal-body px-4">
+                <p class="fs-ms text-muted">註冊需要不到一分鐘的時間，但可以完全控制您的訂單。</p>
+                <form class="needs-validation" novalidate>
+                  <div class="mb-3">
+                    <input class="form-control" type="text" placeholder="Full name" required>
+                  </div>
+                  <div class="mb-3">
+                    <input class="form-control" type="text" placeholder="Email" required>
+                  </div>
+                  <div class="mb-3 password-toggle">
+                    <input class="form-control" type="password" placeholder="Password" required>
+                    <label class="password-toggle-btn" aria-label="Show/hide password">
+                      <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                    </label>
+                  </div>
+                  <div class="mb-3 password-toggle">
+                    <input class="form-control" type="password" placeholder="Confirm password" required>
+                    <label class="password-toggle-btn" aria-label="Show/hide password">
+                      <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                    </label>
+                  </div>
+                  <button class="btn btn-primary d-block w-100" type="submit">登錄</button>
+                  <p class="fs-sm pt-3 mb-0">已經有一個帳戶？<a href='#' class='fw-medium' data-view='#modal-signin-view'>登入</a></p>
+                </form>
+              </div>
+            </div>
+            <div class="modal-body text-center px-4 pt-2 pb-4">
+              <hr class="my-0">
+              <p class="fs-sm fw-medium text-heading pt-4">或登錄與</p><a class="btn-social bs-facebook bs-lg mx-1 mb-2" href="https://www.facebook.com/searchsmart.hk/"><i class="ai-facebook"></i></a><a class="btn-social bs-linkedin bs-lg mx-1 mb-2" href="#"><i class="ai-linkedin"></i></a><a class="btn-social bs-facebook bs-lg mx-1 mb-2" href="#"><i class="ai-facebook"></i></a><a class="btn-social bs-google bs-lg mx-1 mb-2" href="#"><i class="ai-google"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Navbar Floating light for Index page only-->
+      <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
+      <header class="header navbar navbar-expand-lg navbar-dark navbar-floating navbar-sticky" data-fixed-element>
+        <div class="container px-0 px-xl-3">
+          <button class="navbar-toggler ms-n2 me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#primaryMenu"><span class="navbar-toggler-icon"></span></button><a class="navbar-brand flex-shrink-0 order-lg-1 mx-auto ms-lg-0 pe-lg-2 me-lg-4" href="index.html"><img class="navbar-floating-logo d-none d-lg-block" src="img/logo/logo-light.png" alt="SEARCHSMART" width="153"><img class="navbar-stuck-logo" src="img/logo/logo-dark.png" alt="SEARCHSMART" width="153"><img class="d-lg-none" src="img/logo/logo-icon.png" alt="SEARCHSMART" width="58"></a>
+          <div class="d-flex align-items-center order-lg-3 ms-lg-auto">
+
+            <a class="btn btn-success" href="https://wa.me/85297083016" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+          </svg><span class='d-none d-lg-inline'> 給我發短信！&nbsp;&nbsp;&nbsp;</span></a></div>
+          
+          <div class="offcanvas offcanvas-collapse order-lg-2" id="primaryMenu">
+            <div class="offcanvas-header navbar-shadow">
+              <h5 class="mt-1 mb-0">菜單</h5>
+              <button class="btn-close lead" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <!-- Menu-->
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown dropdown-mega"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">範例</a>
+                  <div class="dropdown-menu"><a class="dropdown-column dropdown-column-img bg-secondary" href="index.html" style="background-image: url(img/demo/menu-banner.jpg);"></a>
+                    <div class="dropdown-column"><!--<a class="dropdown-item" href="demo-index.html">網頁模板介紹</a>--><a class="dropdown-item" href="demo-business-consulting.html">商業諮詢</a><a class="dropdown-item" href="demo-shop-homepage.html">商店首頁</a><a class="dropdown-item" href="demo-booking-directory.html">預訂 / 目錄</a><a class="dropdown-item" href="demo-creative-agency.html">創意代理</a><a class="dropdown-item" href="demo-web-studio.html">網頁工作室</a><a class="dropdown-item" href="demo-product-software.html">產品推廣 - 軟體</a><a class="dropdown-item" href="demo-product-gadget.html">產品推廣 - 小工具</a></div>
+                    <div class="dropdown-column"><a class="dropdown-item" href="demo-mobile-app.html">手機應用展示</a><a class="dropdown-item" href="demo-coworking-space.html">共同工作空間</a><a class="dropdown-item" href="demo-event-landing.html">活動專頁</a><a class="dropdown-item" href="demo-marketing-seo.html">數位營銷與 SEO</a><a class="dropdown-item" href="demo-food-blog.html">美食部落格</a><a class="dropdown-item" href="demo-personal-portfolio.html">個人作品集</a></div>
+                  </div>
+                </li>
+    
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="login_tc.html">登入</a>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.html">ENG</a>
+    
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+    
+      <!-- Page content-->
+      <!-- Intro-->
+      <section class="d-flex align-items-center position-relative bg-dark bg-size-cover bg-position-center min-vh-100 overflow-hidden pt-6 pb-lg-5" style="background-image: url(img/demo/presentation/intro/bg.jpg);">
+        <div class="container-fluid pt-4 pb-5 py-lg-5">
+          <div class="row align-items-center py-3">
+            <div class="col-xl-6 col-lg-5 d-flex justify-content-end">
+              <div class="pt-2 mx-auto mb-5 mb-lg-0 ms-lg-0 me-xl-7 text-center text-lg-start" style="max-width: 495px;">
+                <h1 class="display-4 text-light pb-2"><span class="fw-light">SEARCHSMART 是誰？</span></h1>
+                <p class="h4 fw-light text-light opacity-70 line-height-base">我是一名數碼自由工作者接受所有數碼廣告相關的工作！另外您可以在我這裡找到建立出色外觀網站所需的一切。</p><a class="d-inline-flex align-items-center text-decoration-none pt-2 mt-4 mb-5" href="#demos" data-scroll><span class="btn btn-icon rounded-circle border-light flex-shrink-0 px-3"><i class="ai-arrow-down h4 text-light my-1"></i></span><span class="ms-3 text-light fw-medium">查看範例</span></a>
+                <hr class="hr-light mt-0 mb-5">
+                <div class="row">
+                  <div class="col-sm-4 mb-4 mb-sm-0">
+                    <div class="h1 text-light mb-1">14</div>
+                    <div class="h5 text-light fw-normal opacity-70 mb-2">範例主頁</div><span class="badge rounded-pill bg-success">更多即將推出</span>
+                  </div>
+                  <div class="col-sm-4 mb-4 mb-sm-0">
+                    <div class="h1 text-light mb-1">50+</div>
+                    <div class="h5 text-light fw-normal opacity-70 mb-1">靈活組件</div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="h1 text-light mb-1">47</div>
+                    <div class="h5 text-light fw-normal opacity-70 mb-1">內頁模板</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+    
+            <div class="col-xl-6 col-lg-7">
+              <div class="parallax ms-lg-n5" style="max-width: 920px;">
+                <div class="parallax-layer position-relative" data-depth="0.1"><img src="img/demo/presentation/intro/layer01.png" alt="Layer"></div>
+                <div class="parallax-layer" style="z-index: 2;" data-depth="0.3"><img src="img/demo/presentation/intro/layer02.png" alt="Layer"></div>
+                <div class="parallax-layer" data-depth="0.2"><img src="img/demo/presentation/intro/layer03.png" alt="Layer"></div>
+                <div class="parallax-layer" style="z-index: 3;" data-depth="0.1"><img src="img/demo/presentation/intro/layer04.png" alt="Layer"></div>
+                <div class="parallax-layer" data-depth="0.15"><img src="img/demo/presentation/intro/layer05.png" alt="Layer"></div>
+                <div class="parallax-layer" style="z-index: 4;" data-depth="0.25"><img src="img/demo/presentation/intro/layer06.png" alt="Layer"></div>
+                <div class="parallax-layer" data-depth="0.3"><img src="img/demo/presentation/intro/layer07.png" alt="Layer"></div>
+                <div class="parallax-layer" data-depth="0.4"><img src="img/demo/presentation/intro/layer08.png" alt="Layer"></div>
+                <div class="parallax-layer" data-depth="0.35"><img src="img/demo/presentation/intro/layer09.png" alt="Layer"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Demos-->
+      <section class="bg-secondary" id="demos">
+        <div class="container pt-5 pb-4 py-md-6 py-lg-7">
+          <div class="text-cente主頁-3 pt-lg-4">演示
+            <h2 class="h1 mb-4">主頁範例</span></h2>
+            <p class="text-muted">從預建的獨特首頁範例佈局中選擇</p>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3"><a class="d-block nav-heading text-center" href="demo-business-consulting.html">
+                <div class="card card-hover border-0 shadow-lg mb-4"><img class="card-img" src="img/demo/presentation/demos/business-consulting.jpg" alt="商業諮詢"></div>
+                <h3 class="h5 nav-heading-title mb-0">商業諮詢</h3><span class="fs-sm fw-normal text-muted">企業、商業、機構</span></a></div>
+            <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3"><a class="d-block nav-heading text-center" href="demo-shop-homepage.html">
+                <div class="card card-hover border-0 shadow-lg mb-4"><img class="card-img" src="img/demo/presentation/demos/shop-homepage.jpg" alt="商店主頁"></div>
+                <h3 class="h5 nav-heading-title mb-0">商店主頁</h3><span class="fs-sm fw-normal text-muted">電子商務、零售、電子產品、時尚</span></a></div>
+            <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3"><a class="d-block nav-heading text-center" href="demo-booking-directory.html">
+                <div class="card card-hover border-0 shadow-lg mb-4"><img class="card-img" src="img/demo/presentation/demos/booking.jpg" alt="預訂與目錄"></div>
+                <h3 class="h5 nav-heading-title mb-0">預訂 / 目錄</h3><span class="fs-sm fw-normal text-muted">列表、航班、目的地</span></a></div>
+            <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3"><a class="d-block nav-heading text-center" href="demo-creative-agency.html">
+                <div class="card card-hover border-0 shadow-lg mb-4"><img class="card-img" src="img/demo/presentation/demos/creative-agency.jpg" alt="創意機構"></div>
+                <h3 class="h5 nav-heading-title mb-0">創意機構</h3><span class="fs-sm fw-normal text-muted">創意商業、作品集、機構</span></a></div>
+    
+            <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3"><a class="d-block nav-heading text-center" href="demo-product-software.html">
+                <div class="card card-hover border-0 shadow-lg mb-4"><img class="card-img" src="img/demo/presentation/demos/software-landing.jpg" alt="產品推廣 - 軟體"></div>
+                <h3 class="h5 nav-heading-title mb-0">產品推廣 - 軟體</h3><span class="fs-sm fw-normal text-muted">軟體、展示、登陸頁面</span></a></div>
+            <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3"><a class="d-block nav-heading text-center" href="demo-product-gadget.html">
+                <div class="card card-hover border-0 shadow-lg mb-4"><img class="card-img" src="img/demo/presentation/demos/gadget-landing.jpg" alt="產品推廣 - 設備"></div>
+                <h3 class="h5 nav-heading-title mb-0">產品推廣 - 設備</h3><span class="fs-sm fw-normal text-muted">設備、展示、登陸頁面</span></a></div>
+            <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3"><a class="d-block nav-heading text-center" href="demo-mobile-app.html">
+                <div class="card card-hover border-0 shadow-lg mb-4"><img class="card-img" src="img/demo/presentation/demos/mobile-app.jpg" alt="行動應用程式展示"></div>
+                <h3 class="h5 nav-heading-title mb-0">行動應用程式展示</h3><span class="fs-sm fw-normal text-muted">行動應用程式、展示、登陸</span></a></div>
+            <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3"><a class="d-block nav-heading text-center" href="demo-coworking-space.html">
+                <div class="card card-hover border-0 shadow-lg mb-4"><img class="card-img" src="img/demo/presentation/demos/coworking.jpg" alt="共享工作空間"></div>
+                <h3 class="h5 nav-heading-title mb-0">共享工作空間</h3><span class="fs-sm fw-normal text-muted">共享工作空間登陸頁面</span></a></div>
+            <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3"><a class="d-block nav-heading text-center" href="demo-event-landing.html">
+                <div class="card card-hover border-0 shadow-lg mb-4"><img class="card-img" src="img/demo/presentation/demos/event-landing.jpg" alt="活動登陸頁面"></div>
+                <h3 class="h5 nav-heading-title mb-0">活動登陸頁面</h3><span class="fs-sm fw-normal text-muted">登陸頁面、活動、倒計時、門票</span></a></div>
+    
+    
+            <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3"><a class="d-block nav-heading text-center" href="demo-food-blog.html">
+                <div class="card card-hover border-0 shadow-lg mb-4"><img class="card-img" src="img/demo/presentation/demos/food-blog.jpg" alt="美食博客"></div>
+                <h3 class="h5 nav-heading-title mb-0">美食博客</h3><span class="fs-sm fw-normal text-muted">烹飪、食譜、個人博客</span></a></div>
+            <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3"><a class="d-block nav-heading text-center" href="demo-personal-portfolio.html">
+                <div class="card card-hover border-0 shadow-lg mb-4"><img class="card-img" src="img/demo/presentation/demos/personal-portfolio.jpg" alt="個人作品集"></div>
+                <h3 class="h5 nav-heading-title mb-0">個人作品集</h3><span class="fs-sm fw-normal text-muted">烹飪、食譜、個人博客</span></a></div>
+            <div class="col-lg-4 col-sm-6 mb-grid-gutter pb-3"><img class="d-block mb-4" src="img/demo/presentation/demos/coming.png" alt="即將推出">
+              <h3 class="h5 text-center mb-0">即將推出</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+      
+      <!-- Components-->
+      <section class="bg-gradient py-5 py-md-6 py-lg-7">
+        <div class="container-fluid py-3 py-lg-4 overflow-hidden">
+          <div class="row align-items-center">
+            <div class="col-xl-6 col-lg-5 d-flex justify-content-end mb-5 mb-lg-0">
+              <div class="mx-auto ms-lg-0 me-xl-7 text-center text-lg-start" style="max-width: 495px;">
+                <h2 class="h1 text-light mb-4">靈活的<span class='bg-faded-light rounded px-3 py-2'>元件</span></h2>
+                <p class="text-light opacity-70 mb-5">完整的UI套件，包含超過50個模塊化和高度可自定義的元件：Bootstrap + SEARCHSMART獨特元素。</p>
+                <div class="row mb-2 mx-n2">
+                  <div class="col-6 px-2 mb-3"><a class="d-block border border-light rounded-3 pt-3 pb-4 px-3 text-center text-decoration-none" href="components/carousel.html"><img class="d-inline-block opacity-60 mb-3" src="img/demo/presentation/icons/carousel.svg" alt="幻燈片和輪播" width="68">
+                      <h3 class="h6 text-light mb-0">幻燈片和輪播</h3></a></div>
+                  <div class="col-6 px-2 mb-3"><a class="d-block border border-light rounded-3 pt-3 pb-4 px-3 text-center text-decoration-none" href="components/gallery.html"><img class="d-inline-block opacity-60 mb-3" src="img/demo/presentation/icons/gallery.svg" alt="圖片/視頻庫" width="45">
+                      <h3 class="h6 text-light mb-0">圖片/視頻庫</h3></a></div>
+                  <div class="col-6 px-2 mb-3"><a class="d-block border border-light rounded-3 pt-3 pb-4 px-3 text-center text-decoration-none" href="components/charts.html"><img class="d-inline-block opacity-60 mb-3" src="img/demo/presentation/icons/chart.svg" alt="折線圖、柱狀圖和餅圖" width="39">
+                      <h3 class="h6 text-light mb-0">折線圖、柱狀圖和餅圖</h3></a></div>
+                  <div class="col-6 px-2 mb-3"><a class="d-block border border-light rounded-3 pt-3 pb-4 px-3 text-center text-decoration-none" href="components/video-popup.html"><img class="d-inline-block opacity-60 mb-3" src="img/demo/presentation/icons/play.svg" alt="視頻彈出窗口和嵌入" width="44">
+                      <h3 class="h6 text-light mb-0">視頻彈出窗口和嵌入</h3></a></div>
+                  <div class="col-6 px-2 mb-3"><a class="d-block border border-light rounded-3 pt-3 pb-4 px-3 text-center text-decoration-none" href="components/forms.html"><img class="d-inline-block opacity-60 mb-3" src="img/demo/presentation/icons/forms.svg" alt="表單控件" width="42">
+                      <h3 class="h6 text-light mb-0">表單控件</h3></a></div>
+                  <div class="col-6 px-2 mb-3"><a class="d-block border border-light rounded-3 pt-3 pb-4 px-3 text-center text-decoration-none" href="components/testimonials.html"><img class="d-inline-block opacity-60 mb-3" src="img/demo/presentation/icons/review.svg" alt="見證和評論" width="46">
+                      <h3 class="h6 text-light mb-0">見證和評論</h3></a></div>
+                </div><a class="btn btn-success" href="components/typography.html">查看所有元件</a>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-7 d-flex justify-content-end pe-0"><a class="d-block me-n3" href="components/hotspots.html"><img class="d-block" src="img/demo/presentation/macbook.png" alt="元件"></a></div>
+          </div>
+        </div>
+      </section>
+    
+      
+      <!-- Inner Pages-->
+      <section class="py-5 py-md-6 py-lg-7">
+        <div class="container pb-3 pt-4 pb-lg-2">
+          <div class="row justify-content-center mb-4 pb-2">
+            <div class="col-xl-6 col-lg-7 col-md-8">
+              <h2 class="h1 mb-4 text-center">手工製作的<span class='bg-faded-primary rounded text-primary px-3 py-2'>內頁</span></h2>
+              <p class="text-muted text-center">從使用者帳戶/儀表板到特殊頁面（如404和即將推出），擁有豐富設計的內頁模板的大集合。</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <ul class="nav nav-tabs media-tabs justify-content-center justify-content-lg-start" role="tablist">
+                <li class="nav-item mb-3" style="width: 16.5rem;"><a class="nav-link me-2 active" href="#account" data-bs-toggle="tab" role="tab">
+                    <div class="d-flex align-items-center"><img class="rounded" src="img/demo/presentation/icons/user.svg" alt="使用者帳戶" width="60">
+                      <div class="w-100 ps-2 ms-1">
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div class="fs-sm pe-1">使用者帳戶和儀表板</div><i class="ai-chevron-right lead ms-2 me-1"></i>
+                        </div>
+                      </div>
+                    </div></a></li>
+                <li class="nav-item mb-3" style="width: 16.5rem;"><a class="nav-link me-2" href="#portfolio" data-bs-toggle="tab" role="tab">
+                    <div class="d-flex align-items-center"><img class="rounded" src="img/demo/presentation/icons/portfolio.svg" alt="作品集" width="60">
+                      <div class="w-100 ps-2 ms-1">
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div class="fs-sm pe-1">作品集</div><i class="ai-chevron-right lead ms-2 me-1"></i>
+                        </div>
+                      </div>
+                    </div></a></li>
+                <li class="nav-item mb-3" style="width: 16.5rem;"><a class="nav-link me-2" href="#ecommerce" data-bs-toggle="tab" role="tab">
+                    <div class="d-flex align-items-center"><img class="rounded" src="img/demo/presentation/icons/shopping-cart.svg" alt="電子商務" width="60">
+                      <div class="w-100 ps-2 ms-1">
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div class="fs-sm pe-1">電子商務</div><i class="ai-chevron-right lead ms-2 me-1"></i>
+                        </div>
+                      </div>
+                    </div></a></li>
+                <li class="nav-item mb-3" style="width: 16.5rem;"><a class="nav-link me-2" href="#pages" data-bs-toggle="tab" role="tab">
+                    <div class="d-flex align-items-center"><img class="rounded" src="img/demo/presentation/icons/web-page.svg" alt="次要頁面" width="60">
+                      <div class="w-100 ps-2 ms-1">
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div class="fs-sm pe-1">次要頁面</div><i class="ai-chevron-right lead ms-2 me-1"></i>
+                        </div>
+                      </div>
+                    </div></a></li>
+                <li class="nav-item mb-3" style="width: 16.5rem;"><a class="nav-link me-2" href="#blog" data-bs-toggle="tab" role="tab">
+                    <div class="d-flex align-items-center"><img class="rounded" src="img/demo/presentation/icons/blog.svg" alt="部落格和新聞" width="60">
+                      <div class="w-100 ps-2 ms-1">
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div class="fs-sm pe-1">部落格和新聞</div><i class="ai-chevron-right lead ms-2 me-1"></i>
+                        </div>
+                      </div>
+                    </div></a></li>
+                <li class="nav-item mb-3" style="width: 16.5rem;"><a class="nav-link me-2" href="#specialty" data-bs-toggle="tab" role="tab">
+                    <div class="d-flex align-items-center"><img class="rounded" src="img/demo/presentation/icons/error-404.svg" alt="特殊頁面" width="60">
+                      <div class="w-100 ps-2 ms-1">
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div class="fs-sm pe-1">特殊頁面</div><i class="ai-chevron-right lead ms-2 me-1"></i>
+                        </div>
+                      </div>
+                    </div></a></li>
+              </ul>
+    
+      
+            </div>
+            <div class="col-lg-6">
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="account">
+                  <div class="row text-center text-sm-start">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                      <h3 class="h5 mb-4">使用者帳戶</h3>
+                      <ul class="list-unstyled">
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="account-profile.html">個人資料</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="account-payment.html">付款方式</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="account-notifications.html">通知</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="signin-illustration.html">登入 - 插圖</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="signin-image.html">登入 - 圖像</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="signin-signup.html">登入 - 註冊</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="password-recovery.html">密碼恢復</a></li>
+                      </ul>
+                    </div>
+                    <div class="col-sm-6">
+                      <h3 class="h5 mb-4">儀表板</h3>
+                      <ul class="list-unstyled">
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="dashboard-orders.html">訂單</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="dashboard-sales.html">銷售</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="dashboard-messages.html">訊息</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="dashboard-followers.html">追隨者</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="dashboard-reviews.html">評論</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="dashboard-favorites.html">收藏</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="portfolio">
+                  <div class="row text-center text-sm-start">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                      <h3 class="h5 mb-4">作品集網格</h3>
+                      <ul class="list-unstyled">
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="portfolio-style-1.html">網格樣式 1</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="portfolio-style-2.html">網格樣式 2</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="portfolio-style-3.html">網格樣式 3</a></li>
+                      </ul>
+                    </div>
+                    <div class="col-sm-6">
+                      <h3 class="h5 mb-4">單一專案</h3>
+                      <ul class="list-unstyled">
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="portfolio-single-side-gallery-grid.html">專案側邊圖庫 (網格)</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="portfolio-single-side-gallery-list.html">專案側邊圖庫 (清單)</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="portfolio-single-carousel.html">專案輪播</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="portfolio-single-wide-gallery.html">專案寬廣圖庫</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="ecommerce">
+                  <div class="row text-center text-sm-start">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                      <h3 class="h5 mb-4">商店版面配置</h3>
+                      <ul class="list-unstyled">
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="shop-ls.html">左側欄網格</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-noneGrid" href="shop-rs.html">右側欄</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="shop-ns.html">無側欄網格</a></li>
+                      </ul>
+                    </div>
+                    <div class="col-sm-6">
+                      <h3 class="h5 mb-4">商店頁面</h3>
+                      <ul class="list-unstyled">
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="shop-single.html">單一產品</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="checkout.html">購物車和結帳</a></li>
+                        <li class="mb-3"><a class="fw-medium text-decoration-none" href="order-tracking.html">訂
+                          <div class="tab-pane fade" id="pages">
+                            <div class="row text-center text-sm-start">
+                              <div class="col-sm-6 mb-3 mb-sm-0">
+                                <h3 class="h5 mb-4">內頁</h3>
+                                <ul class="list-unstyled">
+                                  <li class="mb-3"><a class="fw-medium text-decoration-none" href="about.html">關於我們</a></li>
+                                  <li class="mb-3"><a class="fw-medium text-decoration-noneGrid" href="contacts-v1.html">聯絡方式 v.1</a></li>
+                                  <li class="mb-3"><a class="fw-medium text-decoration-none" href="contacts-v2.html">聯絡方式 v.2</a></li>
+                                  <li class="mb-3"><a class="fw-medium text-decoration-none" href="contacts-v3.html">聯絡方式 v.3</a></li>
+                                </ul>
+                              </div>
+                              <div class="col-sm-6">
+                                <h3 class="h5 mb-4">幫助中心</h3>
+                                <ul class="list-unstyled">
+                                  <li class="mb-3"><a class="fw-medium text-decoration-none" href="help-topics.html">幫助主題</a></li>
+                                  <li class="mb-3"><a class="fw-medium text-decoration-none" href="help-single-topic.html">單一主題</a></li>
+                                  <li class="mb-3"><a class="fw-medium text-decoration-none" href="help-submit-request.html">提交請求</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="tab-pane fade" id="blog">
+                            <div class="row text-center text-sm-start">
+                              <div class="col-sm-6 mb-3 mb-sm-0">
+                                <h3 class="h5 mb-4">部落格版面</h3>
+                                <ul class="list-unstyled">
+                                  <li class="mb-3"><a class="fw-medium text-decoration-none" href="blog-grid-rs.html">網格右側欄</a></li>
+                                  <li class="mb-3"><a class="fw-medium text-decoration-noneGrid" href="blog-grid-ls.html">網格左側欄</a></li>
+                                  <li class="mb-3"><a class="fw-medium text-decoration-none" href="blog-grid-ns.html">網格無側欄</a></li>
+                                  <li class="mb-3"><a class="fw-medium text-decoration-none" href="blog-list-rs.html">清單右側欄</a></li>
+                                  <li class="mb-3"><a class="fw-medium text-decoration-none" href="blog-list-ls.html">清單左側欄</a></li>
+                                  <li class="mb-3"><a class="fw-medium text-decoration-none" href="blog-list-ns.html">清單無側欄</a></li>
+                                </ul>
+                              </div>
+                              <div class="col-sm-6">
+                                <h3 class="h5 mb-4">單篇文章</h3>
+                                <ul class="list-unstyled">
+                                  <li class="mb-3"><a class="fw-medium text-decoration-none" href="blog-single-rs.html">右側欄</a></li>
+                                  <li class="mb-3"><a class="fw-medium text-decoration-none" href="blog-single-ls.html">左側欄</a></li>
+                                  <li class="mb-3"><a class="fw-medium text-decoration-none" href="blog-single-ns.html">無側欄</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="tab-pane fade" id="specialty">
+                            <div class="row text-center text-sm-start">
+                              <div class="col-sm-6 mb-3 mb-sm-0">
+                                <h3 class="h5 mb-4">404 錯誤</h3>
+                                <ul class="list-unstyled">
+                                  <li class="mb-3"><a class="fw-medium text-decoration-none" href="404-simple.html">簡易文字</a></li>
+                                  <li class="mb-3"><a class="fw-medium text-decoration-noneGrid" href="404-illustration.html">插圖</a></li>
+                                </ul>
+                              </div>
+                              <div class="col-sm-6">
+                                <h3 class="h5 mb-4">即將推出</h3>
+                                <ul class="list-unstyled">
+                                  <li class="mb-3"><a class="fw-medium text-decoration-none" href="coming-soon-image.html">圖像</a></li>
+                                  <li class="mb-3"><a class="fw-medium text-decoration-none" href="coming-soon-illustration.html">插圖</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Mobile Interface-->
+      <section class="bg-secondary py-5 py-md-6 py-lg-7">
+        <div class="container py-3 py-lg-4">
+          <div class="row align-items-center">
+            <div class="col-md-6 mb-5 mb-md-0">
+              <div class="mx-auto mx-md-0" style="max-width: 525px;"><img class="d-block" src="img/demo/presentation/mobile-screens.jpg" alt="手機螢幕"></div>
+            </div>
+            <div class="col-md-6 text-center text-md-start">
+              <h2 class="h1 mb-4"><span class='bg-faded-primary rounded text-primary px-3 py-2'>行動友好</span> 介面</h2>
+              <p class="text-muted mb-5">SEARCHSMART 使用先進的完全響應式 Bootstrap 網格。它在任何螢幕解析度下都呈現出色，並經過優化以適應小型觸控螢幕。SEARCHSMART 提供兩種手持裝置專用的導覽方式和容易存取的 Off-canvas 側邊欄。模板中使用的所有滑塊都支援滑動操作。</p>
+              <div class="d-flex align-items-center justify-content-center justify-content-md-start"><img src="img/demo/presentation/qrcode.png" alt="QR Code" width="120">
+                <div class="ps-3 ps-sm-4">
+                  <div class="text-nav text-start" style="max-width: 175px;">掃描 QR 碼在您的設備上測試</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+      <!-- Features-->
+      <section class="container py-5 py-md-6 py-lg-7">
+        <div class="text-center mb-5 pt-3 pt-lg-4">
+          <h2 class="h1">SEARCHSMART <span class='bg-faded-primary rounded text-primary px-3 py-2'>功能亮點</span></h2>
+        </div>
+        <div class="row pt-3 pt-lg-4">
+          <div class="col-md-6">
+            <div class="d-flex mb-4 pb-2"><i class="ai-check-circle h4 text-success"></i>
+              <div class="ps-3">
+                <h3 class="h5">快速啟動開發</h3>
+                <p class="fs-md mb-0">使用Node.js和Gulp設定，快速且輕鬆地啟動開發流程。下載套件中包含配置文件。全面的任務自動化。</p>
+              </div>
+            </div>
+            <div class="d-flex mb-4 pb-2"><i class="ai-check-circle h4 text-success"></i>
+              <div class="ps-3">
+                <h3 class="h5">使用Sass輕鬆自定義</h3>
+                <p class="fs-md mb-0">SEARCHSMART使用Sass構建。輕鬆更改顏色、字體等等。它是全球最成熟、穩定和強大的CSS擴展語言。</p>
+              </div>
+            </div>
+            <div class="d-flex mb-4 pb-2"><i class="ai-check-circle h4 text-success"></i>
+              <div class="ps-3">
+                <h3 class="h5">Pug - Node模板引擎</h3>
+                <p class="fs-md mb-0">如果不想寫大量HTML，則無需寫入。Pug提供了在普通HTML中不可用的功能，如變量、包含、混合、函數等等。</p>
+              </div>
+            </div>
+            <div class="d-flex mb-4 pb-2"><i class="ai-check-circle h4 text-success"></i>
+              <div class="ps-3">
+                <h3 class="h5">使用最新的Bootstrap構建</h3>
+                <p class="fs-md mb-0">SEARCHSMART是基於Bootstrap 5的強大電子商務前端解決方案，這是全球最受歡迎的響應式、首次面向移動設備的前端組件庫。</p>
+              </div>
+            </div>
+            <div class="d-flex mb-4 pb-2"><i class="ai-check-circle h4 text-success"></i>
+              <div class="ps-3">
+                <h3 class="h5">50+個靈活元件</h3>
+                <p class="fs-md mb-0">除了為所有默認的Bootstrap 5元件設定樣式外，SEARCHSMART還引入了許多新的靈活、可自定義和可重用的元件，您可以在整個網站中使用。</p>
+              </div>
+            </div>
+            <div class="d-flex mb-4 pb-2"><i class="ai-check-circle h4 text-success"></i>
+              <div class="ps-3">
+                <h3 class="h5">適用於移動設備的友好界面</h3>
+                <p class="fs-md mb-0">如今，超過70%的用戶使用移動設備上網和在線購物，這已不足為奇。SEARCHSMART網站是100%響應式的，並針對小型觸摸屏進行了優化。</p>
+              </div>
+            </div>
+            <div class="d-flex mb-4 pb-2"><i class="ai-check-circle h4 text-success"></i>
+              <div class="ps-3">
+                <h3 class="h5">Google字體</h3>
+                <p class="fs-md mb-0">SEARCHSMART使用免費的Google字體，加載速度快且質量非常高。目前，Google字體庫中包含900多種字體系列可供選擇。</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex mb-4 pb-2"><i class="ai-check-circle h4 text-success"></i>
+              <div class="ps-3">
+                <h3 class="h5">觸摸屏幕滑塊</h3>
+                <p class="fs-md mb-0">在觸摸屏時代，尤其是對於頻繁使用的界面元件，如滑塊，確保在手持設備上提供出色的用戶體驗非常重要。</p>
+              </div>
+            </div>
+            <div class="d-flex mb-4 pb-2"><i class="ai-check-circle h4 text-success"></i>
+              <div class="ps-3">
+                <h3 class="h5">基於向量的高清圖標</h3>
+                <p class="fs-md mb-0">SEARCHSMART配備了基於字體的圖標包和svg圖標，以確保信息圖表和界面圖標在任何設備上的任何屏幕分辨率和像素密度下都顯得清晰。</p>
+              </div>
+            </div>
+            <div class="d-flex mb-4 pb-2"><i class="ai-check-circle h4 text-success"></i>
+              <div class="ps-3">
+                <h3 class="h5">W3C有效的HTML代碼</h3>
+                <p class="fs-md mb-0">所有HTML文件都通過W3C驗證器檢查，以確保100%有效的代碼。正如您可能知道的，無效的HTML會限制創新，但SEARCHSMART在其核心是創新的。</p>
+              </div>
+            </div>
+            <div class="d-flex mb-4 pb-2"><i class="ai-check-circle h4 text-success"></i>
+              <div class="ps-3">
+                <h3 class="h5">未來可靠的JavaScript</h3>
+                <p class="fs-md mb-0">SEARCHSMART的核心腳本以及所有依賴項均使用原生JavaScript編寫。唯一需要jQuery的組件是Bootstrap本身。但這將很快改變，一旦發生這種情況，我們將完全放棄jQuery。</p>
+              </div>
+            </div>
+            <div class="d-flex mb-4 pb-2"><i class="ai-check-circle h4 text-success"></i>
+              <div class="ps-3">
+                <h3 class="h5">詳細文檔</h3>
+                <p class="fs-md mb-0">下載套件中包含指向在線文檔的鏈接。它涵蓋了有關如何入門、自定義模板和元件使用的所有重要信息。</p>
+              </div>
+            </div>
+            <h3 class="h5">...以及更多</h3>
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <footer class="footer bg-dark pt-5 pt-md-6 pt-lg-7">
+      <div class="container pt-3 pt-md-0">
+
+        <hr class="hr-light my-5">
+        <div class="container pt-3 pt-md-0">
+          <div class="row pb-3">
+            <div class="col-md-4 mt-n2 pb-3 pb-md-0 mb-4"><a class="d-block mb-3" href="index.html" style="width: 153px;"><img src="img/logo/logo-footer-alt.png" alt="SEARCHSMART"></a>
+              <p class="fs-sm text-light opacity-60 pb-2 pb-sm-3">高度可自訂和模塊化的官方多用途 Bootstrap 模板和 UI 套件。</p><a class="btn-social bs-outline bs-messenger bs-light bs-lg me-2 mb-2" href="http://m.me/searchsmart.katie"><i class="ai-messenger"></i></a><a class="btn-social bs-outline bs-linkedin bs-light bs-lg me-2 mb-2" href="https://www.linkedin.com/company/searchsmarthk/"><i class="ai-linkedin"></i></a><a class="btn-social bs-outline bs-facebook bs-light bs-lg me-2 mb-2" href="https://www.facebook.com/searchsmart.hk/s"><i class="ai-facebook"></i></a><a class="btn-social bs-outline bs-google bs-light bs-lg me-2 mb-2" href="#"><i class="ai-google"></i></a>
+            </div>
+            <div class="col-md-2 col-sm-4 ms-auto pb-1 mb-4">
+              <div class="widget widget-light">
+                <h4 class="widget-title">公司</h4>
+                <ul>
+                  <li><a class="widget-link" href="#">關於</a></li>
+                  <li><a class="widget-link" href="#">職業</a></li>
+                  <li><a class="widget-link" href="#">新聞</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 pb-1 mb-4">
+              <div class="widget widget-light">
+                <h4 class="widget-title">社群</h4>
+                <ul>
+                  <li><a class="widget-link" href="#">藝術家</a></li>
+                  <li><a class="widget-link" href="#">開發者</a></li>
+                  <li><a class="widget-link" href="#">品牌</a></li>
+                  <li><a class="widget-link" href="#">投資者</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 mb-4">
+              <div class="widget widget-light">
+                <h4 class="widget-title">最新消息</h4>
+                <ul>
+                  <li><a class="widget-link" href="#">最新消息</a></li>
+                  <li><a class="widget-link" href="#">更新</a></li>
+                  <li><a class="widget-link" href="#">活動</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <hr class="my-0 border-light">
+          <div class="row align-items-center mt-3 py-4">
+            <div class="col-md-6 order-md-2 text-md-end mb-3">
+              <ul class="list-inline fs-sm mb-0">
+                <li class="list-inline-item"><a class="nav-link-style nav-link-light" href="#">支援</a></li>
+                <li class="list-inline-item"><a class="nav-link-style nav-link-light" href="#">聯絡方式</a></li>
+                <li class="list-inline-item"><a class="nav-link-style nav-link-light" href="#">條款與條件</a></li>
+              </ul>
+            </div>
+            <div class="col-md-6 order-md-1 mb-3">
+              <p class="fs-sm mb-0"><span class="text-light opacity-50 me-1">©2021 <a class="nav-link-style nav-link-light" href="https://searchsmart.hk/" target="_blank" rel="noopener">SEARCHSMART</a>。保留所有權利。</span></p>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+    </footer>
+    
+    <!-- Back to top button--><a class="btn-scroll-top" href="#top" data-scroll data-fixed-element><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">頂部</span><i class="btn-scroll-top-icon ai-arrow-up">   </i></a>
+    <!-- Vendor scrits: js libraries and plugins-->
+    <script src="vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/simplebar/dist/simplebar.min.js"></script>
+    <script src="vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="vendor/parallax-js/dist/parallax.min.js"></script>
+    <!-- Main theme script-->
+    <script src="js/theme.min.js"></script>
+  </body>
+</html>
