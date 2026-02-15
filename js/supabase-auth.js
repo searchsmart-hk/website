@@ -9,28 +9,23 @@
   const client = supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
   window.supabaseClient = client;
 
-  // Handle OAuth callback (URL will have #access_token=... after redirect)
-  client.auth.onAuthStateChange((event, session) => {
-    console.log('Auth state changed:', event, session?.user?.email);
-    if (event === 'SIGNED_IN' && session) {
-      console.log('User signed in:', session.user.email);
-      // Redirect to dashboard-invoices page
-      if (window.location.pathname !== '/dashboard-invoices.html') {
-        console.log('Redirecting to dashboard-invoices');
+  // Handle OAuth callback - check for access token in URL hash
+  if (window.location.hash.includes('access_token')) {
+    console.log('OAuth callback detected, waiting for session...');
+    // Wait a moment for Supabase to process the token
+    setTimeout(async function() {
+      const { data: { session } } = await client.auth.getSession();
+      if (session && session.user) {
+        console.log('Session established, redirecting to dashboard-invoices:', session.user.email);
         window.location.href = 'dashboard-invoices.html';
       }
-    }
-  });
+    }, 1000);
+  }
 
-  // Also check for existing session on page load (in case hash was already parsed)
-  setTimeout(async function() {
-    const { data: { session } } = await client.auth.getSession();
-    console.log('Checking for existing session:', session?.user?.email);
-    if (session && window.location.pathname !== '/dashboard-invoices.html' && window.location.hash.includes('access_token')) {
-      console.log('Found session from hash, redirecting to dashboard-invoices');
-      window.location.href = 'dashboard-invoices.html';
-    }
-  }, 500);
+  // Also listen for auth state changes throughout the session
+  client.auth.onAuthStateChange((event, session) => {
+    console.log('Auth state changed:', event, session?.user?.email);
+  });
 
   // Expose helper functions
   window.supabaseAuth = {
