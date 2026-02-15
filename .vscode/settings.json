@@ -1,0 +1,27 @@
+{
+  "window.title": "seachsmart-prod — ${activeEditorShort}",
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#766df4",
+    "titleBar.activeForeground": "#ffffff",
+    "titleBar.inactiveBackground": "#6b61e0",
+    "titleBar.inactiveForeground": "#f0f0ff",
+    "activityBar.background": "#6b61e0",
+    "activityBar.foreground": "#ffffff",
+    "statusBar.background": "#5c4fe0",
+    "statusBar.foreground": "#ffffff",
+    "statusBar.noFolderBackground": "#5c4fe0",
+    "sideBar.background": "#2f2850",
+    "sideBar.foreground": "#e9e6ff",
+    "sideBarSectionHeader.background": "#352b57",
+    "editorGroupHeader.tabsBackground": "#2b2348",
+    "tab.activeBackground": "#2b2348",
+    "tab.activeForeground": "#ffffff",
+    "tab.inactiveBackground": "#241b3f",
+    "tab.inactiveForeground": "#cfc9f8",
+    "editor.background": "#1e1733",
+    "editor.foreground": "#f5f3ff",
+    "editorLineNumber.foreground": "#6b5fc3",
+    "panel.background": "#241b3f",
+    "panel.foreground": "#e9e6ff"
+  }
+}
