@@ -22,6 +22,16 @@
     }
   });
 
+  // Also check for existing session on page load (in case hash was already parsed)
+  setTimeout(async function() {
+    const { data: { session } } = await client.auth.getSession();
+    console.log('Checking for existing session:', session?.user?.email);
+    if (session && window.location.pathname !== '/dashboard-invoices.html' && window.location.hash.includes('access_token')) {
+      console.log('Found session from hash, redirecting to dashboard-invoices');
+      window.location.href = 'dashboard-invoices.html';
+    }
+  }, 500);
+
   // Expose helper functions
   window.supabaseAuth = {
     signInWithProvider: async function(provider) {
