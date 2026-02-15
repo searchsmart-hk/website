@@ -402,17 +402,5 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.min.js"></script>
     <script src="config.js" defer></script>
     <script src="js/supabase-auth.js" defer></script>
-    <script>
-      // Placeholder handler for social buttons (no backend configured)
-      (function(){
-        document.querySelectorAll('.btn-social').forEach(function(btn){
-          btn.addEventListener('click', function(e){
-            e.preventDefault();
-            var provider = btn.getAttribute('data-provider') || 'provider';
-            alert('Social login ("' + provider + '") is not configured.\n\nTo enable this you need to add OAuth integration on the server or use provider SDKs.');
-          });
-        });
-      })();
-    </script>
   </body>
 </html>
