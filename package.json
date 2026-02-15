@@ -1,0 +1,11 @@
+{
+  "name": "searchsmart-website-config",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "gen-config": "node scripts/generate-config.js"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.0"
+  }
+}

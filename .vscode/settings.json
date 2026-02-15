@@ -1,5 +1,5 @@
 {
-  "window.title": "seachsmart-prod — ${activeEditorShort}",
+  "window.title": "SEARCHSMART — ${activeEditorShort}",
   "workbench.colorCustomizations": {
     "titleBar.activeBackground": "#766df4",
     "titleBar.activeForeground": "#ffffff",

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>seachsmart-prod | Sign In</title>
+    <title>SEARCHSMART | Sign In</title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="SEARCHSMART - Multipurpose Bootstrap Template">
     <meta name="keywords" content="bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative">
@@ -370,10 +370,10 @@
             </div>
             <div class="border-top text-center mt-4 pt-4">
               <p class="fs-sm fw-medium text-heading">Or sign in with</p>
-              <a class="btn-social bs-facebook bs-outline bs-lg mx-1 mb-2" href="#" data-provider="facebook"><i class="ai-facebook"></i></a>
-              <a class="btn-social bs-linkedin bs-outline bs-lg mx-1 mb-2" href="#" data-provider="linkedin"><i class="ai-linkedin"></i></a>
-              <a class="btn-social bs-instagram bs-outline bs-lg mx-1 mb-2" href="#" data-provider="instagram"><i class="ai-instagram"></i></a>
-              <a class="btn-social bs-google bs-outline bs-lg mx-1 mb-2" href="#" data-provider="google"><i class="ai-google"></i></a>
+              <a class="btn-social bs-facebook bs-outline bs-lg mx-1 mb-2" href="#" onclick="supabaseAuth.signInWithProvider('facebook')"><i class="ai-facebook"></i></a>
+              <a class="btn-social bs-linkedin bs-outline bs-lg mx-1 mb-2" href="#" onclick="supabaseAuth.signInWithProvider('linkedin')"><i class="ai-linkedin"></i></a>
+              <a class="btn-social bs-instagram bs-outline bs-lg mx-1 mb-2" href="#" onclick="supabaseAuth.signInWithProvider('instagram')"><i class="ai-instagram"></i></a>
+              <a class="btn-social bs-google bs-outline bs-lg mx-1 mb-2" href="#" onclick="supabaseAuth.signInWithProvider('google')"><i class="ai-google"></i></a>
             </div>
           </div>
         </div>
@@ -401,6 +401,9 @@
     <script src="vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
     <!-- Main theme script-->
     <script src="js/theme.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.min.js"></script>
+    <script src="config.js" defer></script>
+    <script src="js/supabase-auth.js" defer></script>
     <script>
       // Placeholder handler for social buttons (no backend configured)
       (function(){

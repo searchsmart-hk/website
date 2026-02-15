@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>SEARCHSMART | Invoices</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/theme.min.css">
+    <!-- Load Supabase UMD (required by js/supabase-auth.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.min.js"></script>
+    <script src="config.js" defer></script>
+    <script src="js/supabase-auth.js" defer></script>
+    <style>body{padding:20px}</style>
+  </head>
+  <body>
+    <h1>Invoices (Protected)</h1>
+    <div id="user-status">Loading user...</div>
+    <div id="controls" style="margin-top:12px"></div>
+    <div id="invoices" style="margin-top:20px"></div>
+
+    <script>
+      async function render(){
+        const statusEl = document.getElementById('user-status');
+        const controls = document.getElementById('controls');
+        const invoicesEl = document.getElementById('invoices');
+
+        if (!window.supabaseClient){
+          statusEl.innerText = 'Supabase client not configured. Copy config.example.js → config.js and set keys.';
+          return;
+        }
+
+        const { data: { user } } = await window.supabaseClient.auth.getUser();
+        if (!user){
+          statusEl.innerHTML = 'Not signed in. <a href="signin-signup.html">Sign In / Sign Up</a>';
+          return;
+        }
+
+        statusEl.innerText = `Signed in as: ${user.email}`;
+        controls.innerHTML = '<button id="btnSignOut" class="btn btn-outline-primary">Sign out</button>';
+        document.getElementById('btnSignOut').addEventListener('click', ()=>window.supabaseAuth.signOut());
+
+        invoicesEl.innerHTML = '<p>Loading invoices...</p>';
+
+        try {
+          // Query invoices and include customer info
+          const resp = await window.supabaseClient
+            .from('invoices')
+            .select('invoice_number, total_amount, is_paid, payment_due, customers(name,email)')
+            .eq('customers.email', user.email)
+            .order('invoice_number', {ascending:false});
+
+          if (resp.error) throw resp.error;
+          const rows = resp.data || [];
+          if (!rows.length) {
+            invoicesEl.innerHTML = '<p>No invoices found for this user.</p>';
+            return;
+          }
+
+          const table = ['<table class="table"><thead><tr><th>Invoice</th><th>Due</th><th>Total</th><th>Status</th></tr></thead><tbody>'];
+          rows.forEach(r=>{
+            table.push(`<tr><td>#${r.invoice_number}</td><td>${r.payment_due||'N/A'}</td><td>${(r.total_amount||0).toFixed(2)}</td><td>${r.is_paid?'<span class="text-success">Paid</span>':'<span class="text-danger">Not Paid</span>'}</td></tr>`);
+          });
+          table.push('</tbody></table>');
+          invoicesEl.innerHTML = table.join('\n');
+        } catch (err) {
+          invoicesEl.innerText = 'Failed to fetch invoices: ' + (err.message || err);
+        }
+      }
+
+      window.addEventListener('load', render);
+    </script>
+  </body>
+</html>

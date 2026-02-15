@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>seachsmart-prod | Sign In / Sign Up</title>
+    <title>SEARCHSMART | Sign In / Sign Up</title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="SEARCHSMART - Multipurpose Bootstrap Template">
     <meta name="keywords" content="bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative">
@@ -103,6 +103,9 @@
     <link rel="stylesheet" media="screen" href="vendor/simplebar/dist/simplebar.min.css"/>
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="css/theme.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.min.js"></script>
+    <script src="config.js" defer></script>
+    <script src="js/supabase-auth.js" defer></script>
   </head>
   <!-- Body-->
   <body>
@@ -180,15 +183,42 @@
                   <button class="btn btn-primary d-block w-100" type="submit">Sign up</button>
                   <p class="fs-sm pt-3 mb-0">Already have an account? <a href='#' class='fw-medium' data-view='#modal-signin-view'>Sign in</a></p>
                 </form>
+                  <script>
+                    // If supabaseAuth is available, intercept the modal email form to use it
+                    (function(){
+                      document.addEventListener('DOMContentLoaded', function(){
+                        var modal = document.getElementById('modal-signup-view');
+                        if(!modal) return;
+                        var inputs = modal.querySelectorAll('input[type="text"], input[type="password"]');
+                        // Provide a simple handler on the Sign up button
+                        var btn = modal.querySelector('button[type="submit"]');
+                        if(btn){
+                          btn.addEventListener('click', function(e){
+                            if(window.supabaseAuth){
+                              e.preventDefault();
+                              var fullName = modal.querySelector('input[type="text"]').value;
+                              var email = modal.querySelector('input[type="text"]:nth-of-type(2)') ? modal.querySelector('input[type="text"]:nth-of-type(2)').value : '';
+                              var pwd = modal.querySelector('input[type="password"]').value;
+                              if(!email || !pwd || !fullName){
+                                alert('Full name, email and password are required');
+                                return;
+                              }
+                              window.supabaseAuth.signUpWithEmail(email, pwd, fullName);
+                            }
+                          });
+                        }
+                      });
+                    })();
+                  </script>
               </div>
             </div>
             <div class="modal-body text-center px-4 pt-2 pb-4">
               <hr class="my-0">
               <p class="fs-sm fw-medium text-heading pt-4">Or sign in with</p>
-              <a class="btn-social bs-facebook bs-lg mx-1 mb-2" href="#" data-provider="facebook"><i class="ai-facebook"></i></a>
-              <a class="btn-social bs-linkedin bs-lg mx-1 mb-2" href="#" data-provider="linkedin"><i class="ai-linkedin"></i></a>
-              <a class="btn-social bs-instagram bs-lg mx-1 mb-2" href="#" data-provider="instagram"><i class="ai-instagram"></i></a>
-              <a class="btn-social bs-google bs-lg mx-1 mb-2" href="#" data-provider="google"><i class="ai-google"></i></a>
+              <a class="btn-social bs-facebook bs-lg mx-1 mb-2" href="#" onclick="supabaseAuth.signInWithProvider('facebook')"><i class="ai-facebook"></i></a>
+              <a class="btn-social bs-linkedin bs-lg mx-1 mb-2" href="#" onclick="supabaseAuth.signInWithProvider('linkedin')"><i class="ai-linkedin"></i></a>
+              <a class="btn-social bs-instagram bs-lg mx-1 mb-2" href="#" onclick="supabaseAuth.signInWithProvider('instagram')"><i class="ai-instagram"></i></a>
+              <a class="btn-social bs-google bs-lg mx-1 mb-2" href="#" onclick="supabaseAuth.signInWithProvider('google')"><i class="ai-google"></i></a>
             </div>
           </div>
         </div>
