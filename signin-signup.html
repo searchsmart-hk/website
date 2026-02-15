@@ -216,8 +216,6 @@
               <hr class="my-0">
               <p class="fs-sm fw-medium text-heading pt-4">Or sign in with</p>
               <a class="btn-social bs-facebook bs-lg mx-1 mb-2" href="#" onclick="supabaseAuth.signInWithProvider('facebook')"><i class="ai-facebook"></i></a>
-              <a class="btn-social bs-linkedin bs-lg mx-1 mb-2" href="#" onclick="supabaseAuth.signInWithProvider('linkedin')"><i class="ai-linkedin"></i></a>
-              <a class="btn-social bs-instagram bs-lg mx-1 mb-2" href="#" onclick="supabaseAuth.signInWithProvider('instagram')"><i class="ai-instagram"></i></a>
               <a class="btn-social bs-google bs-lg mx-1 mb-2" href="#" onclick="supabaseAuth.signInWithProvider('google')"><i class="ai-google"></i></a>
             </div>
           </div>
@@ -274,8 +272,6 @@
                 <div class="border-top text-center mt-4 pt-4">
                   <p class="fs-sm fw-medium text-heading">Or sign in with</p>
                   <a class="btn-social bs-facebook bs-outline bs-lg mx-1 mb-2" href="#" data-provider="facebook"><i class="ai-facebook"></i></a>
-                  <a class="btn-social bs-linkedin bs-outline bs-lg mx-1 mb-2" href="#" data-provider="linkedin"><i class="ai-linkedin"></i></a>
-                  <a class="btn-social bs-instagram bs-outline bs-lg mx-1 mb-2" href="#" data-provider="instagram"><i class="ai-instagram"></i></a>
                   <a class="btn-social bs-google bs-outline bs-lg mx-1 mb-2" href="#" data-provider="google"><i class="ai-google"></i></a>
                 </div>
               </form>
@@ -336,13 +332,17 @@
     <!-- Main theme script-->
     <script src="js/theme.min.js"></script>
     <script>
-      // Placeholder handler for social buttons (no backend configured)
+      // Handler for social buttons on main page (uses supabaseAuth from supabase-auth.js)
       (function(){
-        document.querySelectorAll('.btn-social').forEach(function(btn){
+        document.querySelectorAll('[data-provider]').forEach(function(btn){
           btn.addEventListener('click', function(e){
             e.preventDefault();
-            var provider = btn.getAttribute('data-provider') || 'provider';
-            alert('Social login ("' + provider + '") is not configured.\n\nTo enable this you need to add OAuth integration on the server or use provider SDKs.');
+            var provider = btn.getAttribute('data-provider');
+            if(window.supabaseAuth){
+              window.supabaseAuth.signInWithProvider(provider);
+            } else {
+              alert('Authentication service is not configured. Please ensure config.js is properly set.');
+            }
           });
         });
       })();
