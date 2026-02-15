@@ -9,6 +9,19 @@
   const client = supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
   window.supabaseClient = client;
 
+  // Handle OAuth callback (URL will have #access_token=... after redirect)
+  client.auth.onAuthStateChange((event, session) => {
+    console.log('Auth state changed:', event, session?.user?.email);
+    if (event === 'SIGNED_IN' && session) {
+      console.log('User signed in:', session.user.email);
+      // Redirect to dashboard-invoices page
+      if (window.location.pathname !== '/dashboard-invoices.html') {
+        console.log('Redirecting to dashboard-invoices');
+        window.location.href = 'dashboard-invoices.html';
+      }
+    }
+  });
+
   // Expose helper functions
   window.supabaseAuth = {
     signInWithProvider: async function(provider) {
@@ -31,8 +44,8 @@
       try {
         const { data, error } = await client.auth.signInWithPassword({ email: email, password: password });
         if (error) throw error;
-        // on success, reload to let protected pages fetch session
-        location.reload();
+        // on success, redirect to invoices page
+        window.location.href = 'invoices.html';
       } catch (err) {
         alert('Sign in error: ' + (err.message || err));
       }
@@ -44,6 +57,10 @@
     getUser: async function(){
       const { data } = await client.auth.getUser();
       return data.user;
+    },
+    getCurrentSession: async function(){
+      const { data } = await client.auth.getSession();
+      return data.session;
     }
   };
 

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>SEARCHSMART | Dashboard - Invoices</title>
+    <!-- SEO Meta Tags-->
+    <meta name="description" content="SEARCHSMART - Multipurpose Bootstrap Template">
+    <meta name="keywords" content="bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative">
+    <meta name="author" content="SEARCHSMART">
+    <!-- Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon and Touch Icons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" color="#5bbad5" href="safari-pinned-tab.svg">
+    <meta name="msapplication-TileColor" content="#766df4">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Page loading styles-->
+    <style>
+      .page-loading {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-transition: all .4s .2s ease-in-out;
+        transition: all .4s .2s ease-in-out;
+        background-color: #fff;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 9999;
+      }
+      .page-loading.active {
+        opacity: 1;
+        visibility: visible;
+      }
+      .page-loading-inner {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -webkit-transition: opacity .2s ease-in-out;
+        transition: opacity .2s ease-in-out;
+        opacity: 0;
+      }
+      .page-loading.active > .page-loading-inner {
+        opacity: 1;
+      }
+      .page-loading-inner > span {
+        display: block;
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #737491;
+      }
+      .page-spinner {
+        display: inline-block;
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-bottom: .75rem;
+        vertical-align: text-bottom;
+        border: .15em solid #766df4;
+        border-right-color: transparent;
+        border-radius: 50%;
+        -webkit-animation: spinner .75s linear infinite;
+        animation: spinner .75s linear infinite;
+      }
+      @-webkit-keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+    <!-- Page loading scripts-->
+    <script>
+      (function () {
+        window.onload = function () {
+          var preloader = document.querySelector('.page-loading');
+          preloader.classList.remove('active');
+          setTimeout(function () {
+            preloader.remove();
+          }, 2000);
+        };
+      })();
+    </script>
+    <!-- Vendor Styles-->
+    <link rel="stylesheet" media="screen" href="vendor/simplebar/dist/simplebar.min.css"/>
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="css/theme.min.css">
+    <!-- Load Supabase UMD (required by js/supabase-auth.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.min.js"></script>
+    <script src="config.js" defer></script>
+    <script src="js/supabase-auth.js" defer></script>
+  </head>
+  <!-- Body-->
+  <body style="background-color:#f7f7fc;">
+    <!-- Page loading spinner-->
+    <div class="page-loading active">
+      <div class="page-loading-inner">
+        <div class="page-spinner"></div><span>Loading...</span>
+      </div>
+    </div>
+    <main class="page-wrapper">
+      <!-- Navbar (Floating light)-->
+      <header class="header navbar navbar-expand-lg navbar-dark navbar-floating navbar-sticky" data-scroll-header data-fixed-element>
+        <div class="container px-0 px-xl-3">
+          <button class="navbar-toggler ms-n2 me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#primaryMenu"><span class="navbar-toggler-icon"></span></button><a class="navbar-brand flex-shrink-0 order-lg-1 mx-auto ms-lg-0 pe-lg-2 me-lg-4" href="index.html"><img class="navbar-floating-logo d-none d-lg-block" src="img/logo/logo-light.png" alt="SEARCHSMART" width="153"><img class="navbar-stuck-logo" src="img/logo/logo-dark.png" alt="SEARCHSMART" width="153"><img class="d-lg-none" src="img/logo/logo-icon.png" alt="SEARCHSMART" width="58"></a>
+          <div class="d-flex align-items-center order-lg-3 ms-lg-auto">
+            <div class="navbar-tool dropdown"><a class="navbar-tool-icon-box" href="#"><span id="user-name-header">User</span></a>
+              <ul class="dropdown-menu dropdown-menu-end" style="width: 15rem;">
+                <li><a class="dropdown-item d-flex align-items-center" onclick="window.supabaseAuth.signOut()"><i class="ai-log-out fs-base opacity-60 me-2"></i>Sign out</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="offcanvas offcanvas-collapse order-lg-2" id="primaryMenu">
+            <div class="offcanvas-header navbar-shadow">
+              <h5 class="mt-1 mb-0">Menu</h5>
+              <button class="btn-close lead" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="contacts-v1.html">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- Page content-->
+      <!-- Slanted background-->
+      <div class="position-relative bg-gradient" style="height: 480px;">
+        <div class="shape shape-bottom shape-slant bg-secondary d-none d-lg-block">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 260">
+            <polygon fill="currentColor" points="0,257 0,260 3000,260 3000,0"></polygon>
+          </svg>
+        </div>
+      </div>
+      <!-- Page content-->
+      <div class="container position-relative zindex-5 pb-4 mb-md-3" style="margin-top: -350px;">
+        <div class="row">
+          <!-- Sidebar-->
+          <div class="col-lg-4 mb-4 mb-lg-0">
+            <div class="bg-light rounded-3 shadow-lg">
+              <div class="px-4 py-4 mb-1 text-center">
+                <h6 class="mb-0 pt-1" id="user-name">Loading...</h6>
+                <span class="text-muted fs-sm" id="user-email">Loading...</span>
+              </div>
+              <div class="d-lg-none px-4 pb-4 text-center"><a class="btn btn-primary px-5 mb-2" href="#account-menu" data-bs-toggle="collapse"><i class="ai-menu me-2"></i>Account menu</a></div>
+              <div class="d-lg-block collapse pb-2" id="account-menu">
+                <h3 class="d-block bg-secondary fs-sm fw-semibold text-muted mb-0 px-4 py-3">Dashboard</h3>
+                <a class="d-flex align-items-center nav-link-style px-4 py-3 active" href="#"><i class="ai-file-text fs-lg opacity-60 me-2"></i>Invoices<span class="nav-indicator"></span></a>
+                <h3 class="d-block bg-secondary fs-sm fw-semibold text-muted mb-0 px-4 py-3">Account</h3>
+                <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top" href="#" onclick="window.supabaseAuth.signOut()"><i class="ai-log-out fs-lg opacity-60 me-2"></i>Sign out</a>
+              </div>
+            </div>
+          </div>
+          <!-- Content-->
+          <div class="col-lg-8">
+            <div class="d-flex flex-column h-100 bg-light rounded-3 shadow-lg p-4">
+              <div class="py-2 p-md-3">
+                <!-- Title-->
+                <div class="d-sm-flex align-items-center justify-content-between pb-2">
+                  <h1 class="h3 mb-3 text-center text-sm-start">Invoice History</h1>
+                </div>
+                <!-- Invoices List-->
+                <div id="invoices-container" style="margin-top: 20px;">
+                  <p class="text-center text-muted">Loading invoices...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Footer-->
+    <footer class="footer py-4">
+      <div class="container d-md-flex align-items-center justify-content-between py-2 text-center text-md-end">
+        <ul class="list-inline fs-sm mb-3 mb-md-0 order-md-2">
+          <li class="list-inline-item my-1"><a class="nav-link-style" href="#">Support</a></li>
+          <li class="list-inline-item my-1"><a class="nav-link-style" href="#">Contacts</a></li>
+          <li class="list-inline-item my-1"><a class="nav-link-style" href="#">Terms &amp; Conditions</a></li>
+        </ul>
+        <p class="fs-sm mb-0 me-3 order-md-1"><span class="text-muted me-1">© All rights reserved. Made by</span><a class="nav-link-style fw-normal" href="https://searchsmart.hk/" target="_blank" rel="noopener">SEARCHSMART</a></p>
+      </div>
+    </footer>
+    <!-- Back to top button--><a class="btn-scroll-top" href="#top" data-scroll data-fixed-element><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ai-arrow-up"></i></a>
+    <!-- Vendor scripts: js libraries and plugins-->
+    <script src="vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/simplebar/dist/simplebar.min.js"></script>
+    <script src="vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <!-- Main theme script-->
+    <script src="js/theme.min.js"></script>
+    <!-- Invoices Script-->
+    <script>
+      async function loadInvoices() {
+        const container = document.getElementById('invoices-container');
+        const userNameEl = document.getElementById('user-name');
+        const userEmailEl = document.getElementById('user-email');
+        const userNameHeader = document.getElementById('user-name-header');
+
+        if (!window.supabaseClient) {
+          container.innerHTML = '<p class="text-danger">Supabase client not configured. Please check config.js</p>';
+          return;
+        }
+
+        // Get current user
+        const { data: { user } } = await window.supabaseClient.auth.getUser();
+        if (!user) {
+          container.innerHTML = '<p class="text-danger">Not signed in. <a href="login.html">Sign in</a></p>';
+          return;
+        }
+
+        // Update user name display
+        userNameEl.textContent = user.user_metadata?.full_name || user.email;
+        userEmailEl.textContent = user.email;
+        userNameHeader.textContent = (user.user_metadata?.full_name || user.email).split(' ')[0];
+
+        // Fetch invoices for this user (joined with customers table)
+        try {
+          const { data, error } = await window.supabaseClient
+            .from('invoices')
+            .select('*, customers(email, name)')
+            .eq('customers.email', user.email)
+            .order('created_at', { ascending: false });
+
+          if (error) throw error;
+
+          if (!data || data.length === 0) {
+            container.innerHTML = '<div class="alert alert-info">No invoices found for your account.</div>';
+            return;
+          }
+
+          // Build invoices table
+          let html = '<div class="table-responsive"><table class="table table-bordered"><thead class="bg-light"><tr><th>Invoice #</th><th>Amount</th><th>Due Date</th><th>Status</th></tr></thead><tbody>';
+          
+          data.forEach(invoice => {
+            const status = invoice.is_paid ? '<span class="badge bg-success">Paid</span>' : '<span class="badge bg-warning">Unpaid</span>';
+            const dueDate = invoice.payment_due ? new Date(invoice.payment_due).toLocaleDateString() : 'N/A';
+            html += `<tr>
+              <td>#${invoice.invoice_number}</td>
+              <td>$${(invoice.total_amount || 0).toFixed(2)}</td>
+              <td>${dueDate}</td>
+              <td>${status}</td>
+            </tr>`;
+          });
+
+          html += '</tbody></table></div>';
+          container.innerHTML = html;
+        } catch (err) {
+          container.innerHTML = '<p class="text-danger">Error loading invoices: ' + (err.message || err) + '</p>';
+          console.error('Error:', err);
+        }
+      }
+
+      window.addEventListener('load', loadInvoices);
+    </script>
+  </body>
+</html>
