@@ -214,7 +214,7 @@
                 </form>
               </div>
               <div class="border-top text-center mt-4 pt-4">
-                <p class="fs-sm fw-medium text-heading">或使用以下方式登入</p><a class="btn-social bs-facebook bs-outline bs-lg mx-1 mb-2" href="#"><i class="ai-facebook"></i></a><a class="btn-social bs-twitter bs-outline bs-lg mx-1 mb-2" href="#"><i class="ai-twitter"></i></a><a class="btn-social bs-instagram bs-outline bs-lg mx-1 mb-2" href="#"><i class="ai-instagram"></i></a><a class="btn-social bs-google bs-outline bs-lg mx-1 mb-2" href="#"><i class="ai-google"></i></a>
+                <p class="fs-sm fw-medium text-heading">或使用以下方式登入</p><a class="btn-social bs-facebook bs-outline bs-lg mx-1 mb-2" href="#" onclick="supabaseAuth.signInWithProvider('facebook')"><i class="ai-facebook"></i></a><a class="btn-social bs-google bs-outline bs-lg mx-1 mb-2" href="#" onclick="supabaseAuth.signInWithProvider('google')"><i class="ai-google"></i></a>
               </div>
             </div>
           </div>
@@ -239,5 +239,9 @@
     <script src="vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
     <!-- Main theme script-->
     <script src="js/theme.min.js"></script>
+    <!-- Load Supabase UMD (required by js/supabase-auth.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.min.js"></script>
+    <script src="config.js" defer></script>
+    <script src="js/supabase-auth.js" defer></script>
   </body>
 </html>

@@ -1,0 +1,3 @@
+// Local configuration - replace with your actual Supabase credentials
+window.SUPABASE_URL = 'https://ieegqbmhgmrhxmfkkkzl.supabase.co';
+window.SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImllZWdxYm1oZ21yaHhtZmtra3psIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAxNzI1NzAsImV4cCI6MjA4NTc0ODU3MH0.38B4tEZKXnpaST2ntZ99wCEVq8saldw8yBCK0uwiFLU';
